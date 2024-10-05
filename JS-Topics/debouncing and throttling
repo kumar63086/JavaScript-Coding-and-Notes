@@ -1,0 +1,2 @@
+Debouncing and throttling are two performance optimization techniques commonly used to control the rate at which a function is invoked.
+They are particularly useful in scenarios where an event occurs frequently, such as scroll events, resizing the window, or typing in a search box.
