@@ -12,9 +12,9 @@ console.log('5'*6+6)//30+6=36
 console.log('4'+6*5)//'4+30=430
 console.log('4'*'6'+5)//24+5=29
 console.log([]==[])//false
-console.log([]===[])//false
+//console.log([]===[])//false
 console.log({}=={})//false
-console.log({}==={})//false
+//console.log({}==={})//false
 console.log([]=='')//true
 // console.log('')//emtye
 // console.log([])
