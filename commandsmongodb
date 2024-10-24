@@ -1,0 +1,247 @@
+1. Basic MongoDB Commands:
+Database Operations:
+Show all databases:
+
+bash
+Copy code
+show dbs
+Create or switch to a database:
+
+bash
+Copy code
+use <database_name>
+If the database does not exist, it will be created upon adding collections or documents.
+
+Show the current database:
+
+bash
+Copy code
+db
+Delete a database:
+
+bash
+Copy code
+db.dropDatabase()
+Collection Operations:
+Show all collections in a database:
+
+bash
+Copy code
+show collections
+Create a collection:
+
+bash
+Copy code
+db.createCollection("<collection_name>")
+Drop a collection:
+
+bash
+Copy code
+db.<collection_name>.drop()
+2. CRUD Operations (Create, Read, Update, Delete):
+Create (Insert):
+Insert one document into a collection:
+
+bash
+Copy code
+db.<collection_name>.insertOne({ key1: value1, key2: value2 })
+Insert multiple documents into a collection:
+
+bash
+Copy code
+db.<collection_name>.insertMany([{ key1: value1 }, { key2: value2 }])
+Read (Query):
+Find one document in a collection:
+
+bash
+Copy code
+db.<collection_name>.findOne({ key: value })
+Find all documents in a collection:
+
+bash
+Copy code
+db.<collection_name>.find()
+Find documents with a condition:
+
+bash
+Copy code
+db.<collection_name>.find({ key: value })
+Find documents with multiple conditions (AND):
+
+bash
+Copy code
+db.<collection_name>.find({ key1: value1, key2: value2 })
+Find documents using comparison operators (e.g., $gt, $lt, $gte, $lte):
+
+bash
+Copy code
+db.<collection_name>.find({ key: { $gt: value } })
+Find documents with logical operators ($or, $and):
+
+bash
+Copy code
+db.<collection_name>.find({ $or: [{ key1: value1 }, { key2: value2 }] })
+Limit the number of documents:
+
+bash
+Copy code
+db.<collection_name>.find().limit(<n>)
+Skip the first n documents:
+
+bash
+Copy code
+db.<collection_name>.find().skip(<n>)
+Sort documents (1 for ascending, -1 for descending):
+
+bash
+Copy code
+db.<collection_name>.find().sort({ key: 1 })
+Update:
+Update one document:
+
+bash
+Copy code
+db.<collection_name>.updateOne({ key: value }, { $set: { key: new_value } })
+Update multiple documents:
+
+bash
+Copy code
+db.<collection_name>.updateMany({ key: value }, { $set: { key: new_value } })
+Replace a document (complete document replacement):
+
+bash
+Copy code
+db.<collection_name>.replaceOne({ key: value }, { new_document })
+Delete:
+Delete one document:
+
+bash
+Copy code
+db.<collection_name>.deleteOne({ key: value })
+Delete multiple documents:
+
+bash
+Copy code
+db.<collection_name>.deleteMany({ key: value })
+3. Indexing in MongoDB:
+Indexes in MongoDB improve query performance by organizing documents based on field values. Without indexes, MongoDB must scan all documents in a collection, leading to slower queries.
+
+Creating Indexes:
+Create a single-field index:
+
+bash
+Copy code
+db.<collection_name>.createIndex({ <field_name>: 1 })
+1 for ascending order.
+-1 for descending order.
+Create a compound index (multiple fields):
+
+bash
+Copy code
+db.<collection_name>.createIndex({ <field1>: 1, <field2>: -1 })
+Create a unique index:
+
+bash
+Copy code
+db.<collection_name>.createIndex({ <field_name>: 1 }, { unique: true })
+Create a sparse index (skips documents without the indexed field):
+
+bash
+Copy code
+db.<collection_name>.createIndex({ <field_name>: 1 }, { sparse: true })
+Create a TTL (Time-To-Live) index for automatically deleting documents:
+
+bash
+Copy code
+db.<collection_name>.createIndex({ <date_field>: 1 }, { expireAfterSeconds: 3600 })
+This deletes documents after 1 hour (3600 seconds).
+
+Create a text index (for full-text search on string fields):
+
+bash
+Copy code
+db.<collection_name>.createIndex({ <field_name>: "text" })
+Create a geospatial index:
+
+bash
+Copy code
+db.<collection_name>.createIndex({ <location_field>: "2dsphere" })
+Managing Indexes:
+View all indexes on a collection:
+
+bash
+Copy code
+db.<collection_name>.getIndexes()
+Drop a specific index:
+
+bash
+Copy code
+db.<collection_name>.dropIndex("<index_name>")
+Drop all indexes:
+
+bash
+Copy code
+db.<collection_name>.dropIndexes()
+Check the performance impact of indexes (explain query plan):
+
+bash
+Copy code
+db.<collection_name>.find({ key: value }).explain("executionStats")
+4. Aggregation Framework:
+Aggregation operations process data records and return computed results. They are used to perform operations like filtering, grouping, and transforming data.
+
+Simple aggregation query:
+
+bash
+Copy code
+db.<collection_name>.aggregate([ { $match: { key: value } } ])
+Group documents by a field and perform a count:
+
+bash
+Copy code
+db.<collection_name>.aggregate([
+  { $group: { _id: "$key", count: { $sum: 1 } } }
+])
+Project specific fields from the documents:
+
+bash
+Copy code
+db.<collection_name>.aggregate([
+  { $project: { key1: 1, key2: 1 } }
+])
+Sort documents in aggregation:
+
+bash
+Copy code
+db.<collection_name>.aggregate([
+  { $sort: { key: 1 } }
+])
+Limit and skip in aggregation:
+
+bash
+Copy code
+db.<collection_name>.aggregate([
+  { $limit: 10 },
+  { $skip: 5 }
+])
+Perform a lookup (similar to SQL JOIN) in aggregation:
+
+bash
+Copy code
+db.<collection_name>.aggregate([
+  {
+    $lookup: {
+      from: "<other_collection>",
+      localField: "<field_in_current_collection>",
+      foreignField: "<field_in_other_collection>",
+      as: "<result_field>"
+    }
+  }
+])
+Unwind an array field to separate documents:
+
+bash
+Copy code
+db.<collection_name>.aggregate([
+  { $unwind: "$array_field" }
+])
