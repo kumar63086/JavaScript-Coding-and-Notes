@@ -1,0 +1,94 @@
+
+MongoDB Basic Interview Questions
+What are some of the advantages of MongoDB?
+
+Schema Flexibility: MongoDB uses a flexible schema design, allowing you to store different types of data in the same collection.
+Scalability: It supports horizontal scaling using sharding, distributing data across multiple servers.
+High Availability: MongoDB provides replica sets, enabling automatic failover and data redundancy.
+Document-Oriented: MongoDB stores data in JSON-like documents (BSON), making it easier to represent complex hierarchical structures.
+What is a Document in MongoDB?
+
+A document is a data record in MongoDB, similar to a row in a relational database. It is stored in BSON (Binary JSON) format, which allows for nested structures like arrays and subdocuments.
+What is a Collection in MongoDB?
+
+A collection is a group of MongoDB documents, analogous to a table in relational databases. Collections do not enforce a fixed schema, allowing flexibility in storing data.
+What are Databases in MongoDB?
+
+A MongoDB database is a container for collections. Each database has its own set of collections, indexes, and configuration settings.
+What is the Mongo Shell?
+
+Mongo Shell is an interactive JavaScript interface to MongoDB, allowing users to query, update data, and manage the database. It provides an environment for executing commands and interacting with the database.
+How does Scale-Out occur in MongoDB?
+
+MongoDB uses sharding for scale-out, distributing data across multiple servers or nodes. Each shard holds a subset of the data, enabling horizontal scaling.
+What are some features of MongoDB?
+
+Document-Oriented: Stores data in flexible, JSON-like documents.
+Indexing: Supports rich indexing for efficient querying.
+Replication: Provides replica sets for high availability.
+Sharding: Supports horizontal scaling through sharding.
+Aggregation: Includes a powerful aggregation framework for data analysis.
+How to add data in MongoDB?
+
+Use the insertOne() or insertMany() method to add documents to a collection:
+javascript
+Copy code
+db.collection.insertOne({ name: 'John', age: 30 });
+How do you Update a Document?
+
+Use the updateOne(), updateMany(), or findOneAndUpdate() method to update documents:
+javascript
+Copy code
+db.collection.updateOne({ name: 'John' }, { $set: { age: 31 } });
+How do you Delete a Document?
+
+Use the deleteOne() or deleteMany() method to remove documents:
+javascript
+Copy code
+db.collection.deleteOne({ name: 'John' });
+How to perform queries in MongoDB?
+
+MongoDB provides various query methods like find(), findOne(), and allows filtering with query operators like $eq, $lt, $gte, etc.:
+javascript
+Copy code
+db.collection.find({ age: { $gte: 25 } });
+What are the data types in MongoDB?
+
+Some common data types include:
+String: Text data.
+Number: Integer, floating-point values.
+Boolean: True/False values.
+Date: Date/time information.
+Array: Lists of values.
+ObjectId: Unique identifier for documents.
+Binary Data, Embedded Documents.
+When to use MongoDB?
+
+Use MongoDB when you need:
+Flexibility in schema design (unstructured data).
+High write performance.
+Real-time analytics and reporting.
+Scalability through sharding.
+When you need to handle big data and complex hierarchical relationships.
+MongoDB Intermediate Interview Questions
+How is Querying done in MongoDB?
+
+Querying is done using the find() method, which accepts filters, projection, and options. You can use comparison, logical, and element operators:
+javascript
+Copy code
+db.collection.find({ age: { $gt: 30 }, status: "A" });
+Explain the term “Indexing” in MongoDB.
+
+Indexing improves query performance by allowing MongoDB to quickly locate documents in a collection. Without indexes, MongoDB must perform a collection scan, scanning every document to find the results.
+What are Geospatial Indexes in MongoDB?
+
+Geospatial indexes enable MongoDB to efficiently handle geospatial data (like coordinates). They allow for queries such as finding documents near a specific location or within a specific geographical area.
+Explain the process of Sharding.
+
+Sharding in MongoDB splits large datasets across multiple servers. It uses a shard key to distribute data across shards. Each shard holds a subset of data, improving horizontal scalability and balancing the load across servers.
+Explain the SET Modifier in MongoDB?
+
+The $set modifier is used in update operations to update the value of a specific field in a document, or add the field if it doesn't exist:
+javascript
+Copy code
+db.collection.updateOne({ name: 'John' }, { $set: { age: 32 } });
