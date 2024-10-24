@@ -1,0 +1,70 @@
+1. What is MongoDB?
+Answer: MongoDB is a NoSQL, document-oriented database designed for scalability and flexibility. It stores data in JSON-like documents with dynamic schemas.
+2. What is a NoSQL database?
+Answer: A NoSQL database provides a mechanism for storage and retrieval of data modeled in means other than tabular relations used in relational databases. NoSQL databases like MongoDB are often used for large-scale data storage.
+3. What are the key features of MongoDB?
+Answer: Key features include document-oriented storage, flexible schema, indexing, replication, aggregation, sharding for horizontal scalability, and high performance.
+4. How does MongoDB store data?
+Answer: MongoDB stores data in BSON (Binary JSON) format, which is a binary representation of JSON-like documents.
+5. What is a collection in MongoDB?
+Answer: A collection in MongoDB is a group of MongoDB documents. It is equivalent to a table in relational databases.
+6. What is a document in MongoDB?
+Answer: A document is a set of key-value pairs, similar to a JSON object. Documents are the basic units of data in MongoDB.
+7. What is the difference between MongoDB and MySQL?
+Answer: MongoDB is a NoSQL database that stores data in documents, while MySQL is a relational database that stores data in rows and columns using SQL.
+8. Explain what is sharding in MongoDB?
+Answer: Sharding in MongoDB is the process of splitting data across multiple servers to support deployments with large data sets and high throughput operations.
+9. What is replication in MongoDB?
+Answer: Replication in MongoDB is used to distribute data across multiple servers for redundancy and high availability, usually implemented through replica sets.
+10. What is a replica set?
+Answer: A replica set is a group of MongoDB servers that maintain the same data set, providing redundancy and high availability.
+11. What is an index in MongoDB?
+Answer: Indexes in MongoDB improve the speed of search operations on a collection by making data retrieval more efficient.
+12. How do you create an index in MongoDB?
+Answer: You can create an index using the createIndex() method. For example: db.collection.createIndex({name: 1}).
+13. What is aggregation in MongoDB?
+Answer: Aggregation is a process of processing data records and returning computed results. MongoDB's aggregation framework allows you to filter, group, and transform data.
+14. Explain what is the Aggregation Pipeline?
+Answer: The aggregation pipeline is a framework for data aggregation modeled on the concept of data processing pipelines. Documents enter the pipeline, and transformations are applied step-by-step.
+15. What are the different types of aggregation stages in MongoDB?
+Answer: Common stages include $match, $group, $project, $sort, $limit, and $lookup (for joins).
+16. What is the purpose of the $match stage in an aggregation pipeline?
+Answer: The $match stage filters documents based on a specified condition. It's similar to the WHERE clause in SQL.
+17. What is the $group stage used for in an aggregation pipeline?
+Answer: The $group stage groups input documents by a specified identifier and applies an accumulator expression, such as sum or average.
+18. What is the MongoDB query language?
+Answer: MongoDB Query Language (MQL) is the syntax used for querying documents in MongoDB. It's JSON-based and provides powerful querying and aggregation functionalities.
+19. How do you query a MongoDB collection?
+Answer: You can query a collection using the find() method. For example: db.collection.find({age: {$gt: 20}}).
+20. What is the difference between find() and findOne()?
+Answer: find() returns all documents that match the query criteria, while findOne() returns only the first matching document.
+21. What is a capped collection in MongoDB?
+Answer: A capped collection is a fixed-size collection that overwrites the oldest documents when it reaches its maximum size. It's useful for storing logs or similar time-ordered data.
+22. How do you insert a document into a MongoDB collection?
+Answer: You can use the insertOne() or insertMany() method. For example: db.collection.insertOne({name: 'John', age: 30}).
+23. What is a BSON?
+Answer: BSON (Binary JSON) is a binary representation of JSON-like documents used to store data in MongoDB. BSON extends JSON by adding more data types, such as Date and Int32.
+24. What are MongoDB operators?
+Answer: MongoDB provides a variety of operators for queries, such as comparison operators ($eq, $gt, $lt), logical operators ($and, $or), and array operators ($in, $all).
+25. What is the purpose of the $regex operator?
+Answer: The $regex operator allows you to perform pattern matching using regular expressions in MongoDB queries.
+26. How do you update documents in MongoDB?
+Answer: You can update documents using updateOne(), updateMany(), or replaceOne(). For example: db.collection.updateOne({name: 'John'}, {$set: {age: 35}}).
+27. What is the difference between updateOne() and updateMany()?
+Answer: updateOne() updates only the first matching document, while updateMany() updates all matching documents.
+28. What is the upsert option in MongoDB?
+Answer: upsert is an option for update operations that, when set to true, creates a new document if no document matches the query criteria.
+29. How do you delete a document in MongoDB?
+Answer: You can delete documents using deleteOne() or deleteMany(). For example: db.collection.deleteOne({name: 'John'}).
+30. What is GridFS in MongoDB?
+Answer: GridFS is a specification for storing and retrieving large files, such as images or videos, in MongoDB.
+31. How does MongoDB ensure data consistency?
+Answer: MongoDB ensures data consistency through replica sets, write concerns, and journaling, which provide durability and consistency guarantees.
+32. What are ACID properties and does MongoDB support them?
+Answer: ACID (Atomicity, Consistency, Isolation, Durability) properties ensure reliable database transactions. MongoDB supports ACID properties at the document level with its transactions feature.
+33. What are MongoDB transactions?
+Answer: Transactions in MongoDB allow you to perform multiple read/write operations as an atomic unit, ensuring ACID compliance across multiple documents and collections.
+34. What is the role of a MongoDB profiler?
+Answer: The MongoDB profiler provides insight into the performance characteristics of operations executed against a MongoDB instance, allowing you to analyze and optimize queries.
+35. How do you perform a join in MongoDB?
+Answer: MongoDB doesn't support joins like relational databases, but you can perform similar operations using the $lookup stage in the aggregation pipeline to combine documents from different collections.
