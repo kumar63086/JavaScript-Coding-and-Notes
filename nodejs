@@ -1,0 +1,297 @@
+1. Basic Node.js Questions
+What is Node.js?
+
+Node.js is an open-source, cross-platform JavaScript runtime environment that allows you to execute JavaScript code outside the browser. It's built on the V8 JavaScript engine used by Google Chrome.
+
+
+What are the key features of Node.js?
+
+Asynchronous and Event-Driven
+Single-threaded but highly scalable
+Non-blocking I/O
+Built-in support for networking protocols (HTTP, TCP, etc.)
+Open-source with a large package ecosystem (npm)
+What is the difference between Node.js and JavaScript?
+
+JavaScript is a programming language, while Node.js is a runtime environment that allows JavaScript to run outside the browser.
+
+
+What is the use of the require() function in Node.js?
+
+require() is used to load modules in Node.js. It allows you to include modules (built-in, local, or third-party) into your current file.
+
+What is the purpose of module.exports and exports in Node.js?
+
+module.exports is used to expose functionality to be imported by other files. It defines what a module exports when require() is called.
+Explain how Node.js works.
+
+Node.js operates on a single-threaded, event-driven architecture. It uses non-blocking I/O to handle multiple requests concurrently, without blocking the main thread.
+What is an event-driven architecture in Node.js?
+
+In an event-driven architecture, the application responds to different events (like I/O operations, HTTP requests) using callback functions. This allows asynchronous processing.
+What is the difference between synchronous and asynchronous functions in Node.js?
+
+Synchronous functions block the execution of further code until the current operation completes, while asynchronous functions allow the rest of the code to execute and return a promise or use callbacks to handle the result.
+What is a callback function in Node.js?
+
+A callback is a function passed as an argument to another function, which is executed after an asynchronous operation completes.
+What is the event loop in Node.js?
+
+The event loop is a core concept in Node.js that processes asynchronous operations. It continuously checks the event queue, executes queued tasks, and handles callbacks.
+What is non-blocking I/O in Node.js?
+
+Non-blocking I/O allows multiple I/O operations to be performed concurrently without waiting for the previous one to finish, improving performance and scalability.
+Explain how Node.js handles concurrency.
+
+Node.js handles concurrency through its event-driven, non-blocking I/O architecture. It processes I/O operations asynchronously via the event loop, allowing it to handle multiple requests simultaneously.
+What is the difference between process.nextTick() and setImmediate() in Node.js?
+
+process.nextTick() queues a function to be executed at the end of the current operation, before any I/O events, while setImmediate() queues it to be executed in the next iteration of the event loop.
+What is the purpose of fs (File System) module in Node.js?
+
+The fs module provides an API to interact with the file system, allowing you to read, write, delete, and manage files and directories.
+What is the difference between fs.readFile() and fs.createReadStream()?
+
+fs.readFile() reads the entire file into memory at once, while fs.createReadStream() reads the file in chunks (streams), which is more efficient for large files.
+What is npm in Node.js?
+
+npm (Node Package Manager) is a tool that allows you to install, manage, and publish Node.js packages.
+What is the package.json file?
+
+The package.json file contains metadata about your project, such as dependencies, scripts, and version information.
+How do you manage packages in Node.js?
+
+Packages are managed using npm install, npm uninstall, and npm update. Dependencies are listed in the package.json file.
+What is the difference between npm and npx?
+
+npm is a package manager for installing and managing packages, while npx is a tool for executing Node.js packages without globally installing them.
+How do you install a package globally in Node.js?
+
+Use the -g flag to install a package globally:
+bash
+Copy code
+npm install -g package-name
+2. Intermediate Node.js Questions
+What are streams in Node.js?
+
+Streams are objects that allow you to read or write data incrementally. They are useful for handling large data sets.
+What are the different types of streams in Node.js?
+
+Readable: For reading data.
+Writable: For writing data.
+Duplex: For both reading and writing.
+Transform: A type of duplex stream that can modify or transform the data.
+What is the buffer class in Node.js?
+
+A Buffer is a temporary memory allocation to handle binary data. It's used when reading from or writing to streams.
+How does the http module work in Node.js?
+
+The http module allows you to create HTTP servers and clients. It can handle requests and send responses to communicate over HTTP.
+How do you create an HTTP server in Node.js?
+
+Example:
+javascript
+Copy code
+const http = require('http');
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello World');
+});
+server.listen(3000);
+What is middleware in Node.js, and how does it work?
+
+Middleware is a function in Express (or other frameworks) that handles HTTP requests and responses, executing before the final route handler.
+What are the different types of HTTP methods in Node.js?
+
+GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS.
+Explain how to make a simple REST API using Node.js.
+
+Create an Express app, define routes for different HTTP methods, and handle them accordingly.
+javascript
+Copy code
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => res.send('GET request'));
+app.post('/', (req, res) => res.send('POST request'));
+
+app.listen(3000);
+What are event emitters in Node.js?
+
+Event emitters are objects that generate and handle events. They use the EventEmitter class, allowing you to define and trigger custom events.
+Explain the concept of clustering in Node.js.
+
+Clustering allows Node.js to take advantage of multi-core systems by creating multiple worker processes that share the same server port, improving performance.
+What is process in Node.js?
+
+process is a global object that provides information and control over the current Node.js process, such as environment variables, arguments, and status.
+What is the difference between process.env and environment variables?
+
+process.env is a Node.js object that contains the user environment variables. You can access or set environment variables using this object.
+What is process.on('uncaughtException') used for in Node.js?
+
+It's used to handle exceptions that were not caught by any try-catch blocks, but its use is discouraged for general error handling.
+What is the use of path module in Node.js?
+
+The path module provides utilities for working with file and directory paths, allowing you to manipulate and resolve file paths.
+What is the difference between fs.unlink() and fs.rmdir()?
+
+fs.unlink() deletes a file, while fs.rmdir() removes a directory.
+How does error handling work in Node.js?
+
+Error handling in Node.js can be done using try-catch for synchronous code, and .catch() for promises or error-first callbacks for asynchronous code.
+What is the difference between try-catch and promises in Node.js?
+
+try-catch handles synchronous errors, while promises handle asynchronous errors. Promises allow you to handle asynchronous operations more cleanly with .then() and .catch().
+What are Promises in Node.js, and how do they work?
+
+Promises represent a value that may be available in the future. They have three states: pending, resolved, and rejected. You can handle promises using .then() and .catch().
+What are async/await in Node.js?
+
+async/await is a syntactic sugar over promises, making asynchronous code appear more synchronous. await pauses execution until the promise is resolved or rejected.
+How do you handle exceptions in async/await?
+
+Use try-catch blocks around await statements:
+javascript
+Copy code
+try {
+  const result = await someAsyncFunction();
+} catch (error) {
+  console.error(error);
+}
+How does the util.promisify() function work in Node.js?
+
+util.promisify() converts callback-based functions to promise-based functions, allowing you to use async/await with these functions.
+What is the difference between fork() and spawn() in Node.js?
+
+spawn() starts a new process, while fork() is used to spawn a new Node.js process that can communicate with the parent process via inter-process communication (IPC).
+Explain how to use WebSockets in Node.js.
+
+WebSockets allow two-way communication between the client and server. You can use libraries like ws to create WebSocket servers and clients in Node.js.
+How does cluster help with scaling in Node.js?
+
+The cluster module allows Node.js to spawn child processes (workers) that share the same server port, utilizing multi-core processors for better scalability.
+What is the purpose of worker_threads in Node.js?
+
+worker_threads allow you to run JavaScript in parallel threads, helping offload CPU-intensive tasks to separate threads to avoid blocking the event loop.
+3. Advanced Node.js Questions
+What is the difference between process-based and thread-based architectures?
+
+Process-based architectures use separate memory spaces for each process, while thread-based architectures share memory space. Node.js primarily uses a process-based approach but can create threads via the worker_threads module.
+Explain the concept of load balancing in Node.js.
+
+Load balancing distributes incoming requests across multiple servers or processes to ensure optimal resource usage, improve performance, and avoid overloading any single server.
+How does the V8 engine work in Node.js?
+
+V8 is the JavaScript engine used by Node.js. It compiles JavaScript directly to machine code, enabling fast execution of JavaScript both in the browser and on the server side.
+How do you improve performance in a Node.js application?
+
+Use clustering, caching, optimizing database queries, using streams for large data, minimizing synchronous calls, profiling the application, and optimizing memory usage.
+What are common memory leaks in Node.js, and how can you avoid them?
+
+Common causes of memory leaks include holding onto references to unused objects, excessive global variables, and event listeners not being removed. You can avoid them by monitoring heap usage, using memory profiling tools, and properly cleaning up resources.
+What is garbage collection in Node.js, and how does it work?
+
+Garbage collection automatically frees memory that is no longer in use. V8 uses a generational garbage collection algorithm to clean up unreferenced objects and optimize memory management.
+What is the purpose of streams.pipeline()?
+
+streams.pipeline() simplifies the process of connecting streams and ensures proper cleanup of resources in case of an error during data transfer between streams.
+How do you use child processes in Node.js?
+
+Child processes allow you to run shell commands or other Node.js scripts in parallel. You can use spawn(), exec(), execFile(), and fork() to create child processes.
+What is the purpose of Node.js’s cluster module?
+
+The cluster module allows you to create multiple child processes that share the same server port, enabling load balancing and better performance on multi-core systems.
+How can you secure a Node.js application?
+
+Use HTTPS, input validation, protect against XSS and CSRF, implement proper session management, use JWT for authentication, secure environment variables, and limit request rates.
+What are best practices for securing Express applications?
+
+Use Helmet.js for setting security-related HTTP headers, sanitize inputs, prevent SQL injection, implement HTTPS, use CSRF protection, and enable CORS when needed.
+What is Helmet.js in Node.js?
+
+Helmet.js is a middleware that helps secure Express applications by setting various HTTP headers to prevent attacks like cross-site scripting (XSS), clickjacking, and others.
+How can you prevent SQL injection in a Node.js app?
+
+Use parameterized queries or prepared statements when interacting with databases to prevent SQL injection attacks.
+How does rate-limiting work in Node.js?
+
+Rate-limiting restricts the number of requests a client can make in a given time period to protect your server from DoS attacks. You can implement it using middleware like express-rate-limit.
+What is CORS, and how can you enable it in Node.js?
+
+CORS (Cross-Origin Resource Sharing) allows restricted resources on a web page to be requested from another domain. You can enable it by using the cors middleware in Express:
+javascript
+Copy code
+const cors = require('cors');
+app.use(cors());
+What is JWT, and how is it used in Node.js for authentication?
+
+JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims between parties. They are commonly used in Node.js to authenticate users in a stateless manner.
+How do you implement OAuth in Node.js?
+
+Use third-party libraries like passport.js to implement OAuth for user authentication. OAuth allows users to log in via social platforms like Google, Facebook, etc.
+What is the purpose of Redis in a Node.js application?
+
+Redis is commonly used in Node.js for caching, session management, and real-time data structures, improving performance and scalability.
+Explain the concept of session management in Node.js.
+
+Session management keeps track of a user's interactions with a web application. In Node.js, this is commonly implemented using libraries like express-session or cookie-session.
+How do you manage sessions in a Node.js web application?
+
+You can manage sessions using express-session, where session data is stored server-side and a session ID is sent to the client via cookies.
+4. Database and ORM Questions
+What are the common databases used with Node.js?
+
+MongoDB, MySQL, PostgreSQL, Redis, CouchDB, Cassandra.
+How does MongoDB integrate with Node.js?
+
+MongoDB integrates with Node.js using libraries like mongoose or mongodb, allowing you to perform CRUD operations on MongoDB collections.
+Explain how to use Mongoose in a Node.js application.
+
+Mongoose is an ODM (Object Data Modeling) library for MongoDB. It allows you to define schemas, perform validation, and work with MongoDB using JavaScript objects.
+What is the difference between NoSQL and SQL databases in Node.js?
+
+SQL databases (e.g., MySQL, PostgreSQL) are relational, structured, and use schemas, while NoSQL databases (e.g., MongoDB) are non-relational, schema-less, and handle unstructured data.
+How do you perform CRUD operations in Node.js using MongoDB?
+
+Use mongoose or mongodb driver to perform CRUD (Create, Read, Update, Delete) operations. Example using mongoose:
+javascript
+Copy code
+const mongoose = require('mongoose');
+const User = mongoose.model('User', { name: String });
+
+// Create
+const user = new User({ name: 'John' });
+user.save();
+
+// Read
+User.find({ name: 'John' });
+
+// Update
+User.updateOne({ name: 'John' }, { name: 'Doe' });
+
+// Delete
+User.deleteOne({ name: 'Doe' });
+What is Sequelize, and how is it used in Node.js?
+
+Sequelize is an ORM for SQL databases like MySQL, PostgreSQL, etc. It allows you to define models and perform database operations using JavaScript instead of raw SQL.
+How do you perform transactions in Node.js with MongoDB?
+
+MongoDB transactions are available for replica sets. You can use the session.startTransaction() method to perform multi-document transactions.
+What is the purpose of connection pooling in Node.js databases?
+
+Connection pooling allows you to maintain a pool of database connections that can be reused, improving performance by reducing the overhead of establishing new connections for each request.
+How do you handle database connections in a Node.js application?
+
+Use connection pooling or establish persistent connections to handle multiple database requests. Libraries like mongoose or sequelize manage connections efficiently.
+Explain how to perform database migrations in Node.js.
+
+Database migrations help keep your database schema in sync with the application code. Tools like sequelize-cli or migrate-mongo are used for managing migrations in Node.js applications.
+
+
+
+
+
+
+
+
