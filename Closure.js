@@ -1,3 +1,6 @@
+A clouser is function that access to its own scope and the scope of the outer function have returned,
+
+
 var a=5
 function outer(){
     var b=6
